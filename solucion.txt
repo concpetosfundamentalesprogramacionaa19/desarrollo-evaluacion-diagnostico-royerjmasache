@@ -1,0 +1,53 @@
+INICIO
+cant, i(0-n) org, i(0-n) marc, x(A-Z) cost, i(0-n) cost2, i(o-n) impA, i(0-n) impCo, i(0-n) impCh, i(0-n) impO, i(0-n) costo_total, i(0-n) i, i(o-n) j, i(o-n) arg, i(o-n) col,i(o-n) ch, i(0-n) acum, i(o-n) otro, i(o-n)
+cant=0, org=0, cost=0, impA=0.20, impCo=0.25, impCh=0.30, impO=0.40
+	<< Bienvenido a la Agencia Central de Veh’culos	
+	<<"Ingrese la cantidad de autos que van a ingresar"
+	>>cant
+	
+	- Seleccione 1 si el auto es de Argentina
+	- Seleecione 2 si el auto es de Colombia
+	- Seleccione 3 si el auto es de Chile
+	- Seleccione 4 si el auto es de otro pa’s
+
+	Para(i=0; i<=cant; i++) hacer		
+		<<"Para el auto número"+ i +" ingrese marca"
+		>>marc
+		<<"Para el auto número"+ i +" ingrese país de origen"
+		>>org
+		<<"Para el auto número"+ i +" ingrese costo"
+		>>cost
+		Si(org=1)entonces
+			arg=arg+1
+			cost2=cost*impA
+			cost_total=cost+cost2
+		Fin_Si
+		Si(org=2)entonces
+			col=col+1
+			cost2=cost*impCo
+			cost_total=cost+cost2
+		Fin_Si
+		Si(org=3)entonces
+			ch=ch+1
+			cost2=cost*impCh
+			cost_total=cost+cost2
+		Fin_Si
+		Si(org=4)entonces
+			otro=otro+1
+			cost2=cost*impO
+			cost_total=cost+cost2
+		Fin_Si
+		acum= acum+cost2
+		acum2= acum2+cost_total
+		<<"El precio de venta del carro número "+ i +"es:"+ cost_total
+	Fin_Para
+	<<"El total de autos importados es: "+cant				
+	<<"El total de impuestos generados es: "+acum
+	<<"El total de los precios de venta de los autos es: "+cost_total
+	<<"El total de autos venidos de Argentina es: "+arg	
+	<<"El total de autos venidos de Colombia es: "+col
+	<<"El total de autos venidos de Chile es: "+ch
+	<<"El total de autos venidos de otro país es: "+otro	
+
+
+
